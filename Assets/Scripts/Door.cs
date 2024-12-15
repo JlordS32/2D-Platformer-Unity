@@ -21,10 +21,8 @@ public class Door : MonoBehaviour
         // if (collision.tag == "Player") {
         //     if (collision.transform.position.x < transform.position.x) {
         //         _cameraController.MoveToNewRoom(_nextRoom.localPosition.x);
-        //         Debug.Log(_nextRoom.localPosition.x);
         //     } else {
         //         _cameraController.MoveToNewRoom(_previousRoom.localPosition.x);
-        //         Debug.Log(_previousRoom.localPosition.x);
         //     }
         // }
     }

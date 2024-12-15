@@ -5,13 +5,12 @@ public class Projectile : MonoBehaviour
 {
     // Serialisable Field
     [SerializeField] private float speed;
-    [SerializeField] private float lifeTime;
 
     // Variables
     private bool hit;
     private BoxCollider2D boxCollider;
     private Animator animator;
-    private float Direction;
+    private float _direction;
     private float _lifeTime;
 
     private void Awake()
@@ -27,12 +26,14 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        float movementSpeed = speed * Time.deltaTime * Direction;
+        float movementSpeed = speed * Time.deltaTime * _direction;
         transform.Translate(movementSpeed, 0, 0);
+
+        Debug.Log("Movement Speed: " + movementSpeed + ", Direction: " + _direction);
 
         _lifeTime += Time.deltaTime;
 
-        if (_lifeTime > lifeTime) {
+        if (_lifeTime > 5) {
             gameObject.SetActive(false);
         }
     }
@@ -46,8 +47,9 @@ public class Projectile : MonoBehaviour
 
     public void setDirection(float direction)
     {
-        lifeTime = 0;
-        Direction = direction;
+        _lifeTime = 0;
+        _direction = direction;
+
         gameObject.SetActive(true);
         hit = false;
         boxCollider.enabled = true;
