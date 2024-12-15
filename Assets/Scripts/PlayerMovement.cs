@@ -71,9 +71,6 @@ public class PlayerMovement : MonoBehaviour
         {
             wallJumpCooldown += Time.deltaTime;
         }
-
-
-        Debug.Log(horizontalInput);
     }
 
     private void Jump()
