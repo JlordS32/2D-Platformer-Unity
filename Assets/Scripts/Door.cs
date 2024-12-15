@@ -18,14 +18,14 @@ public class Door : MonoBehaviour
             Debug.LogError("Camera Controller not set!");
         }
 
-        if (collision.tag == "Player") {
-            if (collision.transform.position.x < transform.position.x) {
-                _cameraController.MoveToNewRoom(_nextRoom.localPosition.x);
-                Debug.Log(_nextRoom.localPosition.x);
-            } else {
-                _cameraController.MoveToNewRoom(_previousRoom.localPosition.x);
-                Debug.Log(_previousRoom.localPosition.x);
-            }
-        }
+        // if (collision.tag == "Player") {
+        //     if (collision.transform.position.x < transform.position.x) {
+        //         _cameraController.MoveToNewRoom(_nextRoom.localPosition.x);
+        //         Debug.Log(_nextRoom.localPosition.x);
+        //     } else {
+        //         _cameraController.MoveToNewRoom(_previousRoom.localPosition.x);
+        //         Debug.Log(_previousRoom.localPosition.x);
+        //     }
+        // }
     }
 }
