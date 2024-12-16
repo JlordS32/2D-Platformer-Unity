@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
         // Follow player
         transform.position = new Vector3(_player.position.x + _offset, transform.position.y, transform.position.z);
-        _offset = Mathf.Lerp(_offset, (_cameraOffset * _player.localScale.x), Time.deltaTime * _cameraSpeed);
+        _offset = Mathf.Lerp(_offset, _cameraOffset * _player.localScale.x, Time.deltaTime * _cameraSpeed);
     }
 
     // public void MoveToNewRoom(float newRoomPosX) {
