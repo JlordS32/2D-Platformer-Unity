@@ -29,8 +29,6 @@ public class Projectile : MonoBehaviour
         float movementSpeed = speed * Time.deltaTime * _direction;
         transform.Translate(movementSpeed, 0, 0);
 
-        Debug.Log("Movement Speed: " + movementSpeed + ", Direction: " + _direction);
-
         _lifeTime += Time.deltaTime;
 
         if (_lifeTime > 5) {

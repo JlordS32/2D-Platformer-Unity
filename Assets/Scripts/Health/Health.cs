@@ -1,21 +1,21 @@
 using System;
 using UnityEngine;
 
-public class Heatlh : MonoBehaviour
+public class Health : MonoBehaviour
 {
-    [SerializeField] private float _startingHealth;
-    private float _currentHealth;
+    [SerializeField] private float startingHealth;
 
+    public float CurrentHealth {get; private set;}
     private void Awake()
     {
-        _currentHealth = _startingHealth;
+        CurrentHealth = startingHealth;
     }
 
     public void TakeDamage(float _damage)
     {
-        _currentHealth = Math.Clamp(_currentHealth - _damage, 0, _startingHealth);
+        CurrentHealth = Math.Clamp(CurrentHealth - _damage, 0, startingHealth);
 
-        if (_currentHealth > 0)
+        if (CurrentHealth > 0)
         {
 
         }
@@ -23,5 +23,13 @@ public class Heatlh : MonoBehaviour
         {
 
         }
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            TakeDamage(1);
+        }
+
+        Debug.Log("Current Health: " + CurrentHealth);
     }
 }
