@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MeleeKnight : BaseKnight
 {
+    [SerializeField] protected float damage;
+
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
@@ -35,5 +37,13 @@ public class MeleeKnight : BaseKnight
         }
 
         return hit.collider != null;
+    }
+
+    protected void DamagePlayer()
+    {
+        if (PlayerInSight() && !playerHealth.isInvulnerable)
+        {
+            playerHealth.TakeDamage(damage);
+        }
     }
 }

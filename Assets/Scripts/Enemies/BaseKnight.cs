@@ -4,9 +4,8 @@ public abstract class BaseKnight : MonoBehaviour
 {
     // Serialisables
     [Header("Knight Parameters")]
-    [SerializeField] protected float attackCooldown;
     [SerializeField] protected float range;
-    [SerializeField] protected float damage;
+    [SerializeField] protected float attackCooldown;
 
     [Header("Colliders")]
     [SerializeField] protected float colliderDistance;
@@ -30,12 +29,4 @@ public abstract class BaseKnight : MonoBehaviour
     }
 
     protected abstract bool PlayerInSight();
-
-    protected void DamagePlayer()
-    {
-        if (PlayerInSight() && !playerHealth.isInvulnerable)
-        {
-            playerHealth.TakeDamage(damage);
-        }
-    }
 }
