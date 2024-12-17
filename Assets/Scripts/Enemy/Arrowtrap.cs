@@ -14,7 +14,7 @@ public class Arrowtrap : MonoBehaviour
         cooldownTimer = 0;
 
         arrows[FindArrows()].transform.position = firepoint.position;
-        arrows[FindArrows()].GetComponent<EnemyProjectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        arrows[FindArrows()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
 
     private int FindArrows() {
@@ -27,7 +27,7 @@ public class Arrowtrap : MonoBehaviour
         return 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
         if (cooldownTimer >= attackCooldown) {
             Attack();

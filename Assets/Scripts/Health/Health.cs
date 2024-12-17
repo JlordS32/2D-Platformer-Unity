@@ -15,12 +15,14 @@ public class Health : MonoBehaviour
     [SerializeField] private float iFramesDuration;
     [SerializeField] private float numberOfFlashes;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D body;
 
     private void Awake()
     {
         CurrentHealth = startingHealth;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        body = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(float _damage)
@@ -39,6 +41,10 @@ public class Health : MonoBehaviour
                 animator.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
+
+                // Stop player from moving when dead
+                body.gravityScale = 0;
+                body.linearVelocity = Vector3.zero;
             }
         }
     }
