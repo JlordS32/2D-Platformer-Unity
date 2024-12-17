@@ -5,13 +5,17 @@ public class Projectile : MonoBehaviour
 {
     // Serialisable Field
     [SerializeField] private float speed;
+    [SerializeField] private float damage;
 
     // Variables
     private bool hit;
-    private BoxCollider2D boxCollider;
-    private Animator animator;
     private float _direction;
     private float _lifeTime;
+    
+    // References
+    private BoxCollider2D boxCollider;
+    private Animator animator;
+    private Health enemyHealth;
 
     private void Awake()
     {
@@ -41,6 +45,11 @@ public class Projectile : MonoBehaviour
         hit = true;
         boxCollider.enabled = false;
         animator.SetTrigger("explode");
+
+        if (collision.tag == "Enemy") {
+            enemyHealth = collision.GetComponent<Health>();
+            enemyHealth?.TakeDamage(damage);
+        }
     }
 
     public void setDirection(float direction)

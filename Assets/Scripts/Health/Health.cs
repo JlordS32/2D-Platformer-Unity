@@ -12,10 +12,9 @@ public class Health : MonoBehaviour
     private bool dead;
     public bool isInvulnerable { get; private set; }
 
-    [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private float numberOfFlashes;
-    
+
     // References
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -43,9 +42,23 @@ public class Health : MonoBehaviour
             if (!dead)
             {
                 animator.SetTrigger("die");
-                GetComponent<PlayerMovement>().enabled = false;
-                dead = true;
 
+                // Player
+                var playerMovement = GetComponent<PlayerMovement>();
+                if (playerMovement != null)
+                    playerMovement.enabled = false;
+
+                // Enemy
+                var enemyPatrol = GetComponent<EnemyPatrol>();
+                var meleeKnight = GetComponent<MeleeKnight>();
+
+                if (enemyPatrol != null)
+                    enemyPatrol.enabled = false;
+
+                if (meleeKnight != null)
+                    meleeKnight.enabled = false;
+
+                dead = true;
                 // Stop player from moving when dead
                 body.gravityScale = 0;
                 body.linearVelocity = Vector3.zero;
