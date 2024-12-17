@@ -217,8 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 1
   range: 3
-  colliderDistance: 0.6
   damage: 1
+  colliderDistance: 0.6
   boxCollider2D: {fileID: 8849870529962471031}
   playerLayer:
     serializedVersion: 2
@@ -237,6 +237,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftEdge: {fileID: 0}
   rightEdge: {fileID: 0}
-  enemy: {fileID: 2689508694891356731}
   speed: 2
   idleDuration: 0
