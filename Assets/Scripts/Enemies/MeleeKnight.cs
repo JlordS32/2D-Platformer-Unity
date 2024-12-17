@@ -3,11 +3,16 @@ using UnityEngine;
 public class MeleeKnight : MonoBehaviour
 {
     // Serialisables
+    [Header("Knight Parameters")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
     [SerializeField] private float damage;
+
+    [Header("Colliders")]
+    [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider2D;
+
+    [Header("Layers")]
     [SerializeField] private LayerMask playerLayer;
 
     // Variables
