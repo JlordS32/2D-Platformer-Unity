@@ -1,34 +1,7 @@
 using UnityEngine;
 
-public class MeleeKnight : MonoBehaviour
+public class MeleeKnight : BaseKnight
 {
-    // Serialisables
-    [Header("Knight Parameters")]
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private float range;
-    [SerializeField] private float damage;
-
-    [Header("Colliders")]
-    [SerializeField] private float colliderDistance;
-    [SerializeField] private BoxCollider2D boxCollider2D;
-
-    [Header("Layers")]
-    [SerializeField] private LayerMask playerLayer;
-
-    // Variables
-    private float cooldownTimer = Mathf.Infinity;
-
-    // References
-    private Animator animator;
-    private Health playerHealth;
-    private EnemyPatrol enemyPatrol;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        enemyPatrol = GetComponent<EnemyPatrol>();
-    }
-
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
@@ -45,7 +18,7 @@ public class MeleeKnight : MonoBehaviour
         }
     }
 
-    private bool PlayerInSight()
+    protected override bool PlayerInSight()
     {
         // Enemy position/origin
         Vector2 boxOrigin = boxCollider2D.bounds.center + transform.right * range * transform.localScale.x * colliderDistance;
@@ -62,13 +35,5 @@ public class MeleeKnight : MonoBehaviour
         }
 
         return hit.collider != null;
-    }
-
-    private void DamagePlayer()
-    {
-        if (PlayerInSight() && !playerHealth.isInvulnerable)
-        {
-            playerHealth.TakeDamage(damage);
-        }
     }
 }
