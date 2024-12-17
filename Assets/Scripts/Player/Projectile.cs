@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
     // References
     private BoxCollider2D boxCollider;
     private Animator animator;
-    private Health enemyHealth;
 
     private void Awake()
     {

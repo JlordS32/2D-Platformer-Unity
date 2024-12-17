@@ -18,14 +18,12 @@ public class Health : MonoBehaviour
     // References
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D body;
 
     private void Awake()
     {
         CurrentHealth = startingHealth;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        body = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(float _damage)
@@ -44,24 +42,17 @@ public class Health : MonoBehaviour
                 animator.SetTrigger("die");
 
                 // Player
-                var playerMovement = GetComponent<PlayerMovement>();
-                if (playerMovement != null)
-                    playerMovement.enabled = false;
+                if (GetComponent<PlayerMovement>() != null)
+                    GetComponent<PlayerMovement>().enabled = false;
 
                 // Enemy
-                var enemyPatrol = GetComponent<EnemyPatrol>();
-                var meleeKnight = GetComponent<MeleeKnight>();
+                if (GetComponent<MeleeKnight>() != null)
+                    GetComponent<MeleeKnight>().enabled = false;
 
-                if (enemyPatrol != null)
-                    enemyPatrol.enabled = false;
-
-                if (meleeKnight != null)
-                    meleeKnight.enabled = false;
+                if (GetComponent<EnemyPatrol>() != null)
+                    GetComponent<EnemyPatrol>().enabled = false;
 
                 dead = true;
-                // Stop player from moving when dead
-                body.gravityScale = 0;
-                body.linearVelocity = Vector3.zero;
             }
         }
     }
@@ -73,8 +64,8 @@ public class Health : MonoBehaviour
 
     private IEnumerator Invulnerability()
     {
-        Physics2D.IgnoreLayerCollision(10, 11, true);
         isInvulnerable = true;
+        Physics2D.IgnoreLayerCollision(10, 11, true);
 
         for (int i = 0; i < numberOfFlashes; i++)
         {
@@ -87,7 +78,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
 
-        isInvulnerable = false;
         Physics2D.IgnoreLayerCollision(10, 11, false);
+        isInvulnerable = false;
     }
 }
