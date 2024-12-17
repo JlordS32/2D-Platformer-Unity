@@ -65,7 +65,7 @@ public class MeleeKnight : MonoBehaviour
     }
 
     private void DamagePlayer() {
-        if (PlayerInSight()) {
+        if (PlayerInSight() && !playerHealth.isInvulnerable) {
             playerHealth.TakeDamage(damage);
         }
     }

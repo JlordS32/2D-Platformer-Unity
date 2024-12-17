@@ -7,13 +7,17 @@ public class Health : MonoBehaviour
     [Header("Health")]
     [SerializeField] private float startingHealth;
 
+    // Properties
     public float CurrentHealth { get; private set; }
-    private Animator animator;
     private bool dead;
+    public bool isInvulnerable { get; private set; }
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private float numberOfFlashes;
+    
+    // References
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D body;
 
@@ -57,6 +61,7 @@ public class Health : MonoBehaviour
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);
+        isInvulnerable = true;
 
         for (int i = 0; i < numberOfFlashes; i++)
         {
@@ -69,6 +74,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
 
+        isInvulnerable = false;
         Physics2D.IgnoreLayerCollision(10, 11, false);
     }
 }
