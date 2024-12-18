@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3138978254719670471}
   - component: {fileID: 2132995405573482005}
   - component: {fileID: 7225061648181462246}
+  - component: {fileID: 6248536821385864090}
   m_Layer: 11
   m_Name: MeleeKnight
   m_TagString: Enemy
@@ -175,6 +176,9 @@ MonoBehaviour:
   startingHealth: 3
   iFramesDuration: 0
   numberOfFlashes: 0
+  components:
+  - {fileID: 7225061648181462246}
+  - {fileID: 2132995405573482005}
 --- !u!114 &2132995405573482005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,14 +191,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7f547ce5b3b9e43b553e7826bd2cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
   range: 3
-  damage: 1
+  attackCooldown: 1
   colliderDistance: 0.6
   boxCollider2D: {fileID: 8849870529962471031}
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  damage: 1
 --- !u!114 &7225061648181462246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +215,16 @@ MonoBehaviour:
   rightEdge: {fileID: 0}
   speed: 2
   idleDuration: 2
+--- !u!114 &6248536821385864090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042790056161746561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1304d9df671271644bb322e6ac595900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 0.5

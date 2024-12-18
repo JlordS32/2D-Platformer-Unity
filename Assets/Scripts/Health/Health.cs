@@ -12,8 +12,12 @@ public class Health : MonoBehaviour
     private bool dead;
     public bool isInvulnerable { get; private set; }
 
+    [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private float numberOfFlashes;
+
+    [Header("Components")]
+    [SerializeField] private Behaviour[] components;
 
     // References
     private Animator animator;
@@ -41,16 +45,10 @@ public class Health : MonoBehaviour
             {
                 animator.SetTrigger("die");
 
-                // Player
-                if (GetComponent<PlayerMovement>() != null)
-                    GetComponent<PlayerMovement>().enabled = false;
-
-                // Enemy
-                if (GetComponent<MeleeKnight>() != null)
-                    GetComponent<MeleeKnight>().enabled = false;
-
-                if (GetComponent<EnemyPatrol>() != null)
-                    GetComponent<EnemyPatrol>().enabled = false;
+                foreach (Behaviour item in components)
+                {
+                    item.enabled = false;
+                }
 
                 dead = true;
             }

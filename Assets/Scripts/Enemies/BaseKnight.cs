@@ -29,4 +29,8 @@ public abstract class BaseKnight : MonoBehaviour
     }
 
     protected abstract bool PlayerInSight();
+
+    public void Deactivate() {
+        gameObject.SetActive(false);
+    }
 }
