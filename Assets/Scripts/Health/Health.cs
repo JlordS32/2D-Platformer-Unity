@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
+        if (isInvulnerable) return;
         CurrentHealth = Math.Clamp(CurrentHealth - _damage, 0, startingHealth);
 
         if (CurrentHealth > 0)
