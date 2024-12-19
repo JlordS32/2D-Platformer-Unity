@@ -54,39 +54,41 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("run", horizontalInput != 0);
         animator.SetBool("grounded", isGrounded());
 
+        // Jump 
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jump();
 
-        if (wallJumpCooldown > 0.2f)
-        {
-            body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocityY);
+        // if (wallJumpCooldown > 0.2f)
+        // {
+        //     body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocityY);
 
-            if (onWall() && !isGrounded())
-            {
-                body.gravityScale = slidingGravityScale;
-            }
-            else
-            {
-                body.gravityScale = gravityScale;
-            }
+        //     if (onWall() && !isGrounded())
+        //     {
+        //         body.gravityScale = slidingGravityScale;
+        //     }
+        //     else
+        //     {
+        //         body.gravityScale = gravityScale;
+        //     }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
+        //     if (Input.GetKeyDown(KeyCode.Space))
+        //     {
+        //         Jump();
 
-                if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
-                {
-                    SoundManager.instance.playSound(jumpSound);
-                }
-            }
-        }
-        else
-        {
-            wallJumpCooldown += Time.deltaTime;
-        }
+        //         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        //         {
+        //             SoundManager.instance.playSound(jumpSound);
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        //     wallJumpCooldown += Time.deltaTime;
+        // }
     }
 
     private void Jump()
     {
-
         if (isGrounded())
         {
             body.linearVelocity = new Vector2(body.linearVelocityX, jumpPower);
