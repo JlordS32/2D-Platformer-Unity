@@ -69,7 +69,7 @@ public class Health : MonoBehaviour
         CurrentHealth = Math.Clamp(CurrentHealth + _value, 0, startingHealth);
     }
 
-    public void RespawnPlayer()
+    public void Respawn()
     {
         dead = false;
         

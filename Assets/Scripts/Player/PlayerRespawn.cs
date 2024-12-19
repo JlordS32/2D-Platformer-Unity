@@ -11,10 +11,15 @@ public class PlayerRespawn : MonoBehaviour
         playerHealth = GetComponent<Health>();
     }
 
-    public void Respawn()
+    public void CheckRespawn()
     {
+        if (currentCheckpoint == null) {
+
+            return;
+        }
+
         transform.position = currentCheckpoint.position;
-        playerHealth.RespawnPlayer();
+        playerHealth.Respawn();
 
         // Move cam to checkpont.
         Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
