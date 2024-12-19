@@ -4,9 +4,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     // Room Camera
-    // [SerializeField] private float _speed; 
-    // private float _currentPosX;
-    // private Vector3 velocity = Vector3.zero;
+    [SerializeField] private float _speed; 
+    private float _currentPosX;
+    private Vector3 velocity = Vector3.zero;
 
     // Follow Player
     [SerializeField] private Transform _player;
@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
         _offset = Mathf.Lerp(_offset, _cameraOffset * _player.localScale.x, Time.deltaTime * _cameraSpeed);
     }
 
-    // public void MoveToNewRoom(float newRoomPosX) {
-    //     _currentPosX = newRoomPosX;
-    // }
+    public void MoveToNewRoom(Transform newRoom) {
+        _currentPosX = newRoom.position.x;
+    }
 }

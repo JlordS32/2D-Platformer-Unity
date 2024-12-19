@@ -9,7 +9,7 @@ public abstract class BaseKnight : MonoBehaviour
 
     [Header("Colliders")]
     [SerializeField] protected float colliderDistance;
-    [SerializeField] protected BoxCollider2D boxCollider2D;
+    protected BoxCollider2D boxCollider2D;
 
     [Header("Layers")]
     [SerializeField] protected LayerMask playerLayer;
@@ -29,6 +29,7 @@ public abstract class BaseKnight : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         enemyPatrol = GetComponent<EnemyPatrol>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     protected abstract bool PlayerInSight();

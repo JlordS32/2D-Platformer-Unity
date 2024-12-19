@@ -49,12 +49,14 @@ public class Health : MonoBehaviour
         {
             if (!dead)
             {
-                animator.SetTrigger("die");
 
                 foreach (Behaviour item in components)
                 {
                     item.enabled = false;
                 }
+
+                animator.SetTrigger("die");
+                animator.SetBool("grounded", true);
 
                 dead = true;
                 SoundManager.instance.playSound(deathSound);
@@ -65,6 +67,21 @@ public class Health : MonoBehaviour
     public void AddHealth(float _value)
     {
         CurrentHealth = Math.Clamp(CurrentHealth + _value, 0, startingHealth);
+    }
+
+    public void RespawnPlayer()
+    {
+        dead = false;
+        
+        AddHealth(startingHealth);
+        animator.ResetTrigger("die");
+        animator.Play("Idle");
+        StartCoroutine(Invulnerability());
+
+        foreach (Behaviour item in components)
+        {
+            item.enabled = true;
+        }
     }
 
     private IEnumerator Invulnerability()

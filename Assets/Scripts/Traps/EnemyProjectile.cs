@@ -33,7 +33,7 @@ public class EnemyProjectile : EnemyDamage
         float movementSpeed = speed * Time.deltaTime;
         transform.Translate(movementSpeed, 0, 0);
 
-        // Lifetime 
+        // Lifetime     
         lifeTime += Time.deltaTime;
         if (lifeTime > resetTime)
         {
