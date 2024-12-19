@@ -10,12 +10,16 @@ public class Firetrap : MonoBehaviour
     [Header("Firetrap Damage")]
     [SerializeField] private float damage;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip activateSound;
+    
+
     // Variables
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     // private EnemyDamage enemyDamage;
     private bool triggered;
-    private bool active;
+    private bool active;    
 
     private Health playerHealth;
 
@@ -62,6 +66,7 @@ public class Firetrap : MonoBehaviour
         spriteRenderer.color = Color.red;
 
         yield return new WaitForSeconds(activationDelay);
+        SoundManager.instance.playSound(activateSound);
         spriteRenderer.color = Color.white;
         active = true;
         animator.SetBool("activated", true);

@@ -222,6 +222,7 @@ MonoBehaviour:
   slidingGravityScale: 0
   wallJumpXPower: 3
   wallJumpYPower: 6
+  jumpSound: {fileID: 8300000, guid: 900d390c101de8343882e3b41f85d3d7, type: 3}
 --- !u!95 &1747083603060132921
 Animator:
   serializedVersion: 7
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e5f1458f0d9ab42baaacc733c28f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.25
+  attackCooldown: 0.5
   firepoint: {fileID: 8555029437351609305}
   fireballs:
   - {fileID: 0}
@@ -269,6 +270,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  fireballSound: {fileID: 8300000, guid: 6da87c03188a92741a6fe5c044f9291c, type: 3}
 --- !u!114 &7168718264912806357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +289,5 @@ MonoBehaviour:
   components:
   - {fileID: 3680653057095543820}
   - {fileID: 4663934304378132829}
+  hurtSound: {fileID: 8300000, guid: e1e2a75b44701ba4f9325d000b88db77, type: 3}
+  deathSound: {fileID: 8300000, guid: a0ca81f1a74dce6489b1c2d0935ac869, type: 3}

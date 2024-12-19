@@ -173,3 +173,4 @@ MonoBehaviour:
   activationDelay: 2
   activeTime: 2
   damage: 1
+  activateSound: {fileID: 8300000, guid: d52fcc86b4196334d9d494250de60572, type: 3}

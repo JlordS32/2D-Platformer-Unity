@@ -14,6 +14,9 @@ public abstract class BaseKnight : MonoBehaviour
     [Header("Layers")]
     [SerializeField] protected LayerMask playerLayer;
 
+    [Header ("Sounds")]
+    [SerializeField] protected AudioClip attackSound;
+    
     // Variables
     protected float cooldownTimer = Mathf.Infinity;
 

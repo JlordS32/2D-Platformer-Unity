@@ -19,6 +19,10 @@ public class Health : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
+
     // References
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -37,6 +41,7 @@ public class Health : MonoBehaviour
 
         if (CurrentHealth > 0)
         {
+            SoundManager.instance.playSound(hurtSound);
             animator.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
         }
@@ -52,6 +57,7 @@ public class Health : MonoBehaviour
                 }
 
                 dead = true;
+                SoundManager.instance.playSound(deathSound);
             }
         }
     }

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 0.5
+  collected: {fileID: 8300000, guid: ad382efe5b2950246a4e54f8ed59f04c, type: 3}
 --- !u!61 &7548335102379876890
 BoxCollider2D:
   m_ObjectHideFlags: 0

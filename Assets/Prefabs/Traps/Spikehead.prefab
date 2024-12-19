@@ -183,6 +183,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
+  sound: {fileID: 0}
 --- !u!114 &5769797453057168404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +203,4 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  sound: {fileID: 8300000, guid: 01b8420a1135c054aa5689cd007ce318, type: 3}

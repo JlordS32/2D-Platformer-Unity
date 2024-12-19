@@ -5,14 +5,20 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // Serializable fields
+    [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+
+    [Header("Movement Parameters")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float gravityScale;
     [SerializeField] private float slidingGravityScale;
     [SerializeField] private float wallJumpXPower;
     [SerializeField] private float wallJumpYPower;
+
+    [Header("Sound")]
+    [SerializeField] private AudioClip jumpSound;
 
     // Private variables
     private Rigidbody2D body;
@@ -62,9 +68,14 @@ public class PlayerMovement : MonoBehaviour
                 body.gravityScale = gravityScale;
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Jump();
+
+                if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
+                {
+                    SoundManager.instance.playSound(jumpSound);
+                }
             }
         }
         else
@@ -75,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+
         if (isGrounded())
         {
             body.linearVelocity = new Vector2(body.linearVelocityX, jumpPower);
@@ -83,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         else if (onWall() && !isGrounded())
         {
             wallJumpCooldown = 0;
+            SoundManager.instance.playSound(jumpSound);
 
             if (horizontalInput == 0)
             {
@@ -109,7 +122,8 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    public bool canAttack() {
+    public bool canAttack()
+    {
         return horizontalInput == 0 && isGrounded() && !onWall();
     }
 }

@@ -9,9 +9,10 @@ public class RangedKnight : BaseKnight
     {
         cooldownTimer += Time.deltaTime;
 
-        if (PlayerInSight() && cooldownTimer >= attackCooldown)
+        if (PlayerInSight() && cooldownTimer >= attackCooldown && playerHealth.CurrentHealth > 0)
         {
             cooldownTimer = 0;
+            SoundManager.instance.playSound(attackSound);
             animator.SetTrigger("shoot");
         }
 
